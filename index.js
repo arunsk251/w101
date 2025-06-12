@@ -1,4 +1,3 @@
-
 const form = document.getElementById('registrationForm');
 const entriesTable = document.getElementById('entriesTable');
 
@@ -52,15 +51,17 @@ form.addEventListener('submit', function (e) {
   const dob = document.getElementById('dob').value;
   const termsAccepted = document.getElementById('terms').checked;
 
-  const age = calculateAge(dob);
-  if (!dob || age < 18 || age > 55) {
-    alert('You must be between 18 and 55 years old to register.');
-    return;
-  }
-
+ 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     alert('Please enter a valid email address.');
+    return;
+  }
+
+
+  const age = calculateAge(dob);
+  if (age < 18 || age > 55) {
+    alert('You must be between 18 and 55 years old to register.');
     return;
   }
 
@@ -79,4 +80,3 @@ form.addEventListener('submit', function (e) {
   loadEntries();
   form.reset();
 });
-
